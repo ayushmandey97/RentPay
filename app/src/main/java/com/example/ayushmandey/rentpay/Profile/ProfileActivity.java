@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toolbar;
 
 import com.example.ayushmandey.rentpay.R;
 import com.example.ayushmandey.rentpay.Utils.BottomNavigationViewHelper;
@@ -21,9 +22,15 @@ public class ProfileActivity extends AppCompatActivity{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_profile);
         Log.d(TAG, "onCreate: started");
         setupBottomNavigationView();
+    }
+
+    private void setupToolbar(){
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.profileToolbar);
+        setSupportActionBar(toolbar);
+
     }
 
     private void setupBottomNavigationView(){
