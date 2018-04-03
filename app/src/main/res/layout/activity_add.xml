@@ -44,7 +44,7 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <EditText
-        android:id="@+id/age"
+        android:id="@+id/title"
         android:layout_width="267dp"
         android:layout_height="32dp"
         android:layout_marginEnd="8dp"
