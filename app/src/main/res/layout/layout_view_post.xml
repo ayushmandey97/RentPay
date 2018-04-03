@@ -1,145 +1,62 @@
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
+        android:layout_height="wrap_content"
+        android:id="@+id/p1">
+
+        <ImageView
+            android:id="@+id/post_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/p1">
-
-
-
-            <!--<com.example.ayushmandey.rentpay.Utils.SqaureImageView-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:id="@+id/post_image"-->
-                <!--android:layout_below="@id/relLayout1"-->
-                <!--android:scaleType="centerCrop" />-->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:id="@+id/post_image"
-                android:scaleType="centerCrop"
-                android:src="@drawable/sony" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/relLayout3"
-                android:layout_below="@+id/post_image"
-                android:padding="5dp"
-                android:layout_marginBottom="1dp"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="₹350"
-                    android:textColor="@color/black"
-                    android:textSize="28sp"
-                    android:id="@+id/price"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="11:23AM"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
-                    android:layout_below="@+id/price"
-                    android:id="@+id/image_time_posted"
-                    android:layout_marginTop="1dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="dheeraj.lalwani Sony bluetooth speakers for the weekend#speaker #bluetooth #BT"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:id="@+id/image_caption"
-                    android:layout_below="@+id/image_time_posted"
-                    android:layout_marginTop="5dp"/>
-
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-
+            android:layout_height="250dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:layout_alignParentLeft="true" />
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/p1">
+            android:id="@+id/relLayout3"
+            android:layout_below="@+id/post_image"
+            android:padding="5dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/white">
 
-
-
-            <!--<com.example.ayushmandey.rentpay.Utils.SqaureImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/post_image"-->
-            <!--android:layout_below="@id/relLayout1"-->
-            <!--android:scaleType="centerCrop" />-->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:id="@+id/post_image1"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bikes" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/relLayout31"
-                android:layout_below="@+id/post_image1"
-                android:layout_marginBottom="2dp"
-                android:background="@color/white">
+                android:text="₹350"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:id="@+id/price"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="₹160/hour"
-                    android:textColor="@color/black"
-                    android:textSize="28sp"
-                    android:id="@+id/price1"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:23AM"
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:layout_below="@+id/price"
+                android:id="@+id/image_time_posted"
+                android:layout_marginTop="1dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2 DAYS AGO"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
-                    android:layout_below="@+id/price1"
-                    android:id="@+id/image_time_posted1"
-                    android:layout_marginTop="1dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dheeraj.lalwani Sony bluetooth speakers for the weekend#speaker #bluetooth #BT"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:id="@+id/image_caption"
+                android:layout_below="@+id/image_time_posted"
+                android:layout_marginTop="5dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ayushman.dey Motorcycle enthusiast renting two R15s"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:id="@+id/image_caption1"
-                    android:layout_below="@+id/image_time_posted1"
-                    android:layout_marginTop="5dp"/>
-
-
-            </RelativeLayout>
 
         </RelativeLayout>
     </RelativeLayout>
-    </ScrollView>
-
-
 </RelativeLayout>
-</merge>

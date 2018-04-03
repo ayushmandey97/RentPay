@@ -1,7 +1,9 @@
 package com.example.ayushmandey.rentpay.Home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,17 +11,30 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
+
+import com.example.ayushmandey.rentpay.Utils.CustomAdapter;
+import com.example.ayushmandey.rentpay.Utils.Post;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import com.example.ayushmandey.rentpay.R;
 import com.example.ayushmandey.rentpay.Utils.BottomNavigationViewHelper;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
     private FirebaseAuth mAuth;
     private static final int ACTIVITY_NUM = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setupBottomNavigationView();
         setupViewPager();
+
 
     }
 
@@ -58,9 +74,11 @@ public class HomeActivity extends AppCompatActivity {
     }
     @Override
     public void onStart() {
+
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = null;
+        final ListView lv = findViewById(R.id.listView11d);
         try {
             currentUser = mAuth.getCurrentUser();
         }catch (Exception e){
