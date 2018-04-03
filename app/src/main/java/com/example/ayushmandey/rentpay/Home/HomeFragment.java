@@ -1,6 +1,7 @@
 package com.example.ayushmandey.rentpay.Home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,10 +10,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.ayushmandey.rentpay.ProductDetails.ProductDetailsActivity;
 import com.example.ayushmandey.rentpay.R;
 import com.example.ayushmandey.rentpay.Utils.CustomAdapter;
 import com.example.ayushmandey.rentpay.Utils.Post;
@@ -38,6 +42,9 @@ public class HomeFragment extends Fragment {
     CustomAdapter adp;
     ListView lv;
     View view;
+    int i;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class HomeFragment extends Fragment {
         db = FirebaseDatabase.getInstance().getReference("Items");
         adp = new CustomAdapter(getContext() , p);
         lv.setAdapter(adp);
+
 
         try {
             db = FirebaseDatabase.getInstance().getReference("Items");
@@ -88,6 +96,56 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+
+
+        //Displaying product information on selection
+        lv.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Post item = (Post)lv.getItemAtPosition(position);
+                FirebaseDatabase f = FirebaseDatabase.getInstance();
+                DatabaseReference ref = f.getReference("Items");
+                i = 0;
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot Postzz : dataSnapshot.getChildren()) {
+
+                            if(i == position){
+                                Post post = Postzz.getValue(Post.class);
+                                String pid = post.getPid();
+                                System.out.println("********** " + pid + " **********");
+
+                                Bundle bn = new Bundle();
+                                bn.putString("productId", pid);
+                                Intent intent = new Intent(getContext(), ProductDetailsActivity.class);
+                                intent.putExtras(bn);
+                                startActivity(intent);
+
+                            }
+
+                            i++;
+
+                        }
+
+                        adp = new CustomAdapter(getContext(), p);
+                        lv.setAdapter(adp);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
+            }
+        });
+
+
 
         return view;
     }

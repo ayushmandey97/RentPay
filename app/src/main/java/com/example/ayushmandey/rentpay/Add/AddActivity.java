@@ -57,7 +57,6 @@ public class AddActivity extends AppCompatActivity {
     Geocoder geocoder;
 
     LocationManager mLocationManager;
-    Location mCurrentLocation;
 
     ProgressDialog progress, itemAddProgress;
     StorageReference storage;
@@ -87,7 +86,7 @@ public class AddActivity extends AppCompatActivity {
         gallery = (Button) findViewById(R.id.gallery);
         capture = (Button) findViewById(R.id.camera);
 
-        title = (EditText) findViewById(R.id.age);
+        title = (EditText) findViewById(R.id.title);
         desc = (EditText) findViewById(R.id.desc);
         price = (EditText) findViewById(R.id.price);
         age = (EditText) findViewById(R.id.age);
@@ -208,8 +207,9 @@ public class AddActivity extends AppCompatActivity {
                 //Putting retrieved data into the database
                 myRef = database.getReference("Items");
                 myRef = myRef.push();
-
                 user = FirebaseAuth.getInstance().getCurrentUser();
+
+                myRef.child("pid").setValue(myRef.getKey());
                 myRef.child("userId").setValue(user.getUid());
 
                 myRef.child("title").setValue(title.getText().toString());
@@ -230,7 +230,7 @@ public class AddActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 String cityName = addresses.get(0).getAddressLine(0);
-                cityName = cityName.split(",")[2].trim();
+                //cityName = cityName.split(",")[2].trim();
 
                 myRef.child("locality").setValue(cityName);
                 Toast.makeText(getApplicationContext(), "Product data successfully added!", Toast.LENGTH_SHORT).show();
