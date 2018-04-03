@@ -16,6 +16,9 @@
         android:id="@+id/listView11d"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/search"/>
+        android:layout_below="@+id/search"
+        android:divider="@drawable/divider"
+        android:dividerHeight="4dp"
+        />
 
 </RelativeLayout>

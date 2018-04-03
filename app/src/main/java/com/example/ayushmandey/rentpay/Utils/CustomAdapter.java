@@ -2,6 +2,7 @@ package com.example.ayushmandey.rentpay.Utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class CustomAdapter extends ArrayAdapter<Post> implements Filterable {
         backup = arr;
     }
 
+
     @Override
     public int getCount() {
         return arr.size();
@@ -60,6 +62,13 @@ public class CustomAdapter extends ArrayAdapter<Post> implements Filterable {
         tv1.setText( item.getTitle() );
         tv2.setText( item.getProductAge() );
         tv3.setText( item.getDesc());
+
+        if (position % 2 == 1) {
+            customView.setBackgroundColor(Color.BLUE);
+        } else {
+            customView.setBackgroundColor(Color.CYAN);
+        }
+
 
         return customView;
     }

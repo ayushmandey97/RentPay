@@ -59,4 +59,13 @@
 
         </RelativeLayout>
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/p1"
+        android:paddingBottom="50dp"
+        android:background="@android:color/darker_gray" />
+
 </RelativeLayout>

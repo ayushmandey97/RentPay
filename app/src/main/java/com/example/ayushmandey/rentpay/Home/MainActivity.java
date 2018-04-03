@@ -1,6 +1,7 @@
 package com.example.ayushmandey.rentpay.Home;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 //        p = new ArrayList<>();
 //
         lv = findViewById( R.id.listView11d);
+
 
 //        ArrayAdapter<String> adp = new ArrayAdapter<String>( c , android.R.layout.simple_list_item_1 , arr );
 //
