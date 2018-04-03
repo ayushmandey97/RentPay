@@ -8,23 +8,36 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.ayushmandey.rentpay.R;
+import com.example.ayushmandey.rentpay.Utils.Post;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by Sarthak Kukreja on 4/1/2018.
+ */
 
-public class CustomAdapter extends ArrayAdapter<Post> {
+public class CustomAdapter extends ArrayAdapter<Post> implements Filterable {
 
     List<Post> arr;
+    List<Post> backup;
 
     public CustomAdapter(@NonNull Context context, List<Post> arr ) {
         super(context, R.layout.layout_view_post, arr );
         this.arr = arr;
+        backup = arr;
+    }
+
+    @Override
+    public int getCount() {
+        return arr.size();
     }
 
     @NonNull
@@ -51,4 +64,45 @@ public class CustomAdapter extends ArrayAdapter<Post> {
         return customView;
     }
 
+    @NonNull
+    @Override
+    public Filter getFilter() {
+
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+
+                arr = backup;
+
+                FilterResults results = new FilterResults();
+                ArrayList<Post> FilteredArrayNames = new ArrayList<>();
+
+                constraint = constraint.toString().toLowerCase();
+
+                for( int i = 0 ; i < arr.size() ; i++ )
+                {
+                    Post cur = arr.get(i);
+
+                    if ( cur.getTitle().toLowerCase().contains(constraint.toString().toLowerCase()) )
+                    {
+                        FilteredArrayNames.add(cur);
+                    }
+                }
+
+                results.count = FilteredArrayNames.size();
+                results.values = FilteredArrayNames;
+
+                return results;
+
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+                arr = (List<Post>) filterResults.values;
+                notifyDataSetChanged();
+            }
+
+        };
+    };
 }

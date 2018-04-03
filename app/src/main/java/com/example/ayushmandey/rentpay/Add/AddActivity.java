@@ -79,7 +79,7 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         Log.d(TAG, "onCreate: started");
-        //setupBottomNavigationView();
+        setupBottomNavigationView();
 
         itemAddProgress = new ProgressDialog(this);
 
