@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setupBottomNavigationView();
         setupViewPager();
+
     }
 
 
@@ -38,12 +39,12 @@ public class HomeActivity extends AppCompatActivity {
         adapter.addFragment(new SearchFragment());
         ViewPager viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(adapter);
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_settings);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_logo1);
         tabLayout.getTabAt(2).setIcon(R.drawable.ic_search);
+        viewPager.setCurrentItem(1);
     }
 
     private void setupBottomNavigationView(){

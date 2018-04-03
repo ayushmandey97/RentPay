@@ -2,6 +2,7 @@ package com.example.ayushmandey.rentpay.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.example.ayushmandey.rentpay.Home.HomeActivity;
 import com.example.ayushmandey.rentpay.R;
@@ -48,11 +50,11 @@ public class LogIn extends AppCompatActivity {
 
     }*/
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+//        playVideo();
         mAuth = FirebaseAuth.getInstance();
         mLoginProgress = new ProgressDialog(this);
         signin = (Button)findViewById(R.id.signin);
@@ -211,4 +213,11 @@ public class LogIn extends AppCompatActivity {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         }
     }
+//    public void playVideo(){
+//        VideoView videoView= (VideoView) findViewById(R.id.videoView);
+//        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.test);
+//        videoView.setVideoURI(uri);
+//        videoView.start();
+//    }
 }
+
