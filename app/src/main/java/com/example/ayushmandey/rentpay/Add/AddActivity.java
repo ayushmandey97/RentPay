@@ -1,6 +1,7 @@
 package com.example.ayushmandey.rentpay.Add;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -15,13 +16,21 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.ayushmandey.rentpay.ProductDetails.ProductDetailsActivity;
@@ -43,6 +52,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import static android.transition.Fade.IN;
 
 
 public class AddActivity extends AppCompatActivity {
@@ -71,7 +82,6 @@ public class AddActivity extends AppCompatActivity {
 
     DatabaseReference myRef;
     int flag = 0;
-
     FirebaseUser user;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,6 +89,17 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         Log.d(TAG, "onCreate: started");
         setupBottomNavigationView();
+        final Context c = this;
+        final LinearLayout l2 = (LinearLayout) findViewById(R.id.l2);
+        final Button details = (Button) findViewById(R.id.details);
+        final RelativeLayout r0 = findViewById(R.id.r0);
+        l2.setVisibility(View.INVISIBLE);
+//        final Scene scene1,scene2;
+//        final ViewGroup sceneRoot = (ViewGroup) findViewById(R.id.rootContainer);
+//        sceneRoot.removeAllViews();
+//        sceneRoot.addView(r0);
+//        scene1 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_add, this);
+//        scene2 = Scene.getSceneForLayout(sceneRoot, R.layout.snippet_textfields, this);
 
         itemAddProgress = new ProgressDialog(this);
 
@@ -144,6 +165,16 @@ public class AddActivity extends AppCompatActivity {
             }
         });
 
+
+        //Dheeraj's code here for UI components
+
+        details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                r0.setVisibility(View.INVISIBLE);
+                l2.setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     @Override
