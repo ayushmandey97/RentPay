@@ -12,9 +12,6 @@ import com.example.ayushmandey.rentpay.R;
 import com.example.ayushmandey.rentpay.Utils.BottomNavigationViewHelper;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
-/**
- * Created by dheeraj on 1/4/18.
- */
 
 public class ProfileActivity extends AppCompatActivity{
     public static final String TAG="ProfileActivity";
@@ -24,7 +21,9 @@ public class ProfileActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Log.d(TAG, "onCreate: started");
-        setupBottomNavigationView();
+        //setupBottomNavigationView();
+
+
     }
 
     private void setupToolbar(){
