@@ -208,8 +208,9 @@ public class AddActivity extends AppCompatActivity {
                 //Putting retrieved data into the database
                 myRef = database.getReference("Items");
                 myRef = myRef.push();
-
                 user = FirebaseAuth.getInstance().getCurrentUser();
+
+                myRef.child("pid").setValue(myRef.getKey());
                 myRef.child("userId").setValue(user.getUid());
 
                 myRef.child("title").setValue(title.getText().toString());

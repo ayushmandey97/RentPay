@@ -10,8 +10,30 @@ public class Post {
     String timeStamp;
     String desc;
     String locality;
+    String pid;
+
+    public Post(String title, String productAge, String image, String price, String timeStamp, String desc, String locality, String pid) {
+        this.title = title;
+        this.productAge = productAge;
+        this.image = image;
+        this.price = price;
+        this.timeStamp = timeStamp;
+        this.desc = desc;
+        this.locality = locality;
+        this.pid = pid;
+    }
+
+    public String getPid() {
+
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
 
     public Post() {
+
     }
 
     public String getTitle() {
@@ -71,14 +93,5 @@ public class Post {
         this.locality = locality;
     }
 
-    public Post(String title, String productAge, String image, String price, String timeStamp, String desc, String locality) {
 
-        this.title = title;
-        this.productAge = productAge;
-        this.image = image;
-        this.price = price;
-        this.timeStamp = timeStamp;
-        this.desc = desc;
-        this.locality = locality;
-    }
 }
