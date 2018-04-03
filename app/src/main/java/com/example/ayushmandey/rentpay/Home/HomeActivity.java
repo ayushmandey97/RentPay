@@ -1,5 +1,6 @@
 package com.example.ayushmandey.rentpay.Home;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import com.example.ayushmandey.rentpay.R;
 import com.example.ayushmandey.rentpay.Utils.BottomNavigationViewHelper;
@@ -15,15 +18,18 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = "HomeActivity";
+    private FirebaseAuth mAuth;
     private static final int ACTIVITY_NUM = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started");
+        mAuth = FirebaseAuth.getInstance();
         setupBottomNavigationView();
         setupViewPager();
     }
+
 
     private void setupViewPager(){
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -49,4 +55,24 @@ public class HomeActivity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = null;
+        try {
+            currentUser = mAuth.getCurrentUser();
+        }catch (Exception e){
+
+        }
+        //FirebaseAuth.getInstance().signOut();
+        //updateUI(currentUser);
+        if(currentUser==null){
+            Intent LogIn = new Intent(HomeActivity.this,com.example.ayushmandey.rentpay.Login.LogIn.class);
+            startActivity(LogIn);
+            finish();
+        }
+        // FirebaseAuth.getInstance().signOut();
+    }
+
 }

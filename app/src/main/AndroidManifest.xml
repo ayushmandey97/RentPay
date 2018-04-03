@@ -20,6 +20,8 @@
         <activity android:name=".Chat.ChatActivity"></activity>
         <activity android:name=".Notification.NotificationActivity"></activity>
         <activity android:name=".Profile.ProfileActivity"></activity>
+        <activity android:name=".Login.LogIn"></activity>
+        <activity android:name=".Register.Register"></activity>
     </application>
 
 </manifest>

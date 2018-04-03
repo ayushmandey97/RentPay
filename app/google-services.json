@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "413036272562",
+    "firebase_url": "https://rentpay-849b9.firebaseio.com",
+    "project_id": "rentpay-849b9",
+    "storage_bucket": "rentpay-849b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413036272562:android:c15bee1494920fba",
+        "android_client_info": {
+          "package_name": "com.example.ayushmandey.rentpay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413036272562-kop0q952po7aop3q7ac8g7asmjjn7usn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ayushmandey.rentpay",
+            "certificate_hash": "2463e4463408cde06b2c64c477bcb53014e4decf"
+          }
+        },
+        {
+          "client_id": "413036272562-8ibj8gf3ggg01usrvp3jn1toocbhej8n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQzfEMSMpEA5K5QwwkHKug6LO2-yfNQdw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413036272562-8ibj8gf3ggg01usrvp3jn1toocbhej8n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
