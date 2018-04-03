@@ -24,10 +24,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.ayushmandey.rentpay.ProductDetails.ProductDetailsActivity;
 import com.example.ayushmandey.rentpay.R;
 import com.example.ayushmandey.rentpay.Utils.BottomNavigationViewHelper;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -70,7 +73,7 @@ public class AddActivity extends AppCompatActivity {
     DatabaseReference myRef;
     int flag = 0;
 
-
+    FirebaseUser user;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,19 +81,17 @@ public class AddActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started");
         //setupBottomNavigationView();
 
-
-
         itemAddProgress = new ProgressDialog(this);
 
         submit = (Button) findViewById(R.id.submit);
         gallery = (Button) findViewById(R.id.gallery);
         capture = (Button) findViewById(R.id.camera);
 
-        title = (EditText) findViewById(R.id.title);
+        title = (EditText) findViewById(R.id.age);
         desc = (EditText) findViewById(R.id.desc);
         price = (EditText) findViewById(R.id.price);
         age = (EditText) findViewById(R.id.age);
-        im = (ImageView) findViewById(R.id.imageView);
+        im = (ImageView) findViewById(R.id.productImage);
 
         progress = new ProgressDialog(this);
         database = FirebaseDatabase.getInstance();
@@ -207,6 +208,9 @@ public class AddActivity extends AppCompatActivity {
                 //Putting retrieved data into the database
                 myRef = database.getReference("Items");
                 myRef = myRef.push();
+
+                user = FirebaseAuth.getInstance().getCurrentUser();
+                myRef.child("userId").setValue(user.getUid());
 
                 myRef.child("title").setValue(title.getText().toString());
                 myRef.child("price").setValue(price.getText().toString());

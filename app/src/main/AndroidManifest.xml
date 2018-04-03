@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -21,12 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Add.AddActivity"></activity>
-        <activity android:name=".Chat.ChatActivity"></activity>
-        <activity android:name=".Notification.NotificationActivity"></activity>
-        <activity android:name=".Profile.ProfileActivity"></activity>
-        <activity android:name=".Login.LogIn"></activity>
-        <activity android:name=".Register.Register"></activity>
+        <activity android:name=".Add.AddActivity" />
+        <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Notification.NotificationActivity" />
+        <activity android:name=".Profile.ProfileActivity" />
+        <activity android:name=".Login.LogIn" />
+        <activity android:name=".Register.Register" />
+        <activity android:name=".ProductDetails.ProductDetailsActivity"></activity>
     </application>
 
 </manifest>
