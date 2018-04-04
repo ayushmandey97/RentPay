@@ -11,20 +11,32 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp">
+
             <TextView
-                android:id="@+id/textEditProfile"
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit your profile"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_marginTop="400dp"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="8dp"
-                android:textAlignment="center"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="5dp"
-                android:background="@drawable/grey_border"/>
+                android:layout_marginTop="48dp"
+                android:text="Email ID :" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="153dp" />
+
+            <Button
+                android:id="@+id/signOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="121dp"
+                android:text="Sign Out" />
 
         </RelativeLayout>
         <include layout="@layout/layout_bottom_navigation_view"/>
