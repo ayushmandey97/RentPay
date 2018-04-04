@@ -52,14 +52,14 @@ public class HomeActivity extends AppCompatActivity {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new SettingsFragment());
         adapter.addFragment(new HomeFragment());
-        adapter.addFragment(new SearchFragment());
+        //adapter.addFragment(new SearchFragment());
         ViewPager viewPager = (ViewPager) findViewById(R.id.container);
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_settings);
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_logo1);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_search);
+        //tabLayout.getTabAt(2).setIcon(R.drawable.ic_search);
         viewPager.setCurrentItem(1);
     }
 
