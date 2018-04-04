@@ -19,6 +19,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class Register extends AppCompatActivity {
 
@@ -26,6 +30,11 @@ public class Register extends AppCompatActivity {
     private EditText name,emailr,rPassword;
     private FirebaseAuth mAuth;
     private ProgressDialog mLoginProgress;
+    DatabaseReference wDatabase;
+    private String displayName;
+    private String email;
+    private String password;
+    String uid;
     //private int flag =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +54,9 @@ public class Register extends AppCompatActivity {
         Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String displayName = name.getText().toString();
-                String email = emailr.getText().toString();
-                String password = rPassword.getText().toString();
+                 displayName = name.getText().toString();
+                 email = emailr.getText().toString();
+                 password = rPassword.getText().toString();
 
                 if(displayName.equals("")||email.equals("")||password.equals("")){
                     Toast.makeText(getApplicationContext(),"Fields cannot be left Blank!",Toast.LENGTH_SHORT).show();
@@ -71,34 +80,27 @@ public class Register extends AppCompatActivity {
 
     }
 
-    protected void register_user(String displayName, String email, String password) {
-        /*mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+    protected void register_user(final String displayName, final String email, final String password) {
 
-                        // ...
-                    }
-                });*/
-//if(flag==0) {
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
-                    sendEmailVerification();
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    uid = user.getUid();
+                    wDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+                    HashMap<String, String> userMap = new HashMap<>();
+                    userMap.put("name",displayName);
+                    userMap.put("email",email);
+                    userMap.put("uid",uid);
+                    wDatabase.setValue(userMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                sendEmailVerification();
+                            }
+                        }
+                    });
                 } else {
                     mLoginProgress.hide();
                     Toast.makeText(getApplicationContext(), "User already Exists or Email not Verified", Toast.LENGTH_SHORT).show();
@@ -106,12 +108,9 @@ public class Register extends AppCompatActivity {
                 }
             }
         });
-//} else {
-        //  FirebaseUser user = mAuth.getCurrentUser();
 
-        //verifyEmail(user);
     }
-    //}
+
 
     private void sendEmailVerification() {
 

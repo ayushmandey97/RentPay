@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".Add.AddActivity" />
         <activity android:name=".Chat.ChatActivity" />
+        <activity android:name=".Chat.ChatWindow" />
         <activity android:name=".Notification.NotificationActivity" />
         <activity android:name=".Profile.ProfileActivity" />
         <activity android:name=".Login.LogIn" />
